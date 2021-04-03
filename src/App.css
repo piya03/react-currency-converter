@@ -1,0 +1,37 @@
+*{
+  box-sizing: border-box;
+}
+.container{
+  display: grid;
+  grid-template-columns: 45% 45%;
+  justify-content: space-around;
+  margin: auto;
+  border: 1px solid #a08989;
+  height: 300px;
+  border-radius: 5px;
+  max-width: 700px;
+  padding: 10px;
+}
+.heading{
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+  font-weight: 600;
+}
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+.leftContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.rupee{
+  font-size: 28px;
+  font-weight: 500;
+}
