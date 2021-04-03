@@ -6,15 +6,13 @@ const SelectRange = ({ setStartDate }) => {
   const [active, setActive] = useState("1 D");
 
   function setStartDateFun(noOfDays, format) {
-    return setStartDate(
-      moment().subtract(noOfDays, format).format("YYYY-MM-DD")
-    );
+    setStartDate(moment().subtract(noOfDays, format).format("YYYY-MM-DD"));
   }
   return (
     <div>
       <ul className="list">
         <li
-          className={`${active == "1 D" ? "activeStyle" : ""}`}
+          className={`${active === "1 D" ? "activeStyle" : ""}`}
           onClick={() => {
             setStartDateFun(2, "day");
             setActive("1 D");
@@ -23,7 +21,7 @@ const SelectRange = ({ setStartDate }) => {
           1 D
         </li>
         <li
-          className={`${active == "1 M" ? "activeStyle" : ""}`}
+          className={`${active === "1 M" ? "activeStyle" : ""}`}
           onClick={() => {
             setActive("1 M");
             setStartDateFun(1, "months");
@@ -32,7 +30,7 @@ const SelectRange = ({ setStartDate }) => {
           1 M
         </li>
         <li
-          className={`${active == "6 M" ? "activeStyle" : ""}`}
+          className={`${active === "6 M" ? "activeStyle" : ""}`}
           onClick={() => {
             setActive("6 M");
             setStartDateFun(6, "months");
@@ -41,7 +39,7 @@ const SelectRange = ({ setStartDate }) => {
           6 M
         </li>
         <li
-          className={`${active == "1 Y" ? "activeStyle" : ""}`}
+          className={`${active === "1 Y" ? "activeStyle" : ""}`}
           onClick={() => {
             setActive("1 Y");
             setStartDateFun(1, "years");
@@ -50,7 +48,7 @@ const SelectRange = ({ setStartDate }) => {
           1 Y
         </li>
         <li
-          className={`${active == "5 Y" ? "activeStyle" : ""}`}
+          className={`${active === "5 Y" ? "activeStyle" : ""}`}
           onClick={() => {
             setActive("5 Y");
             setStartDateFun(5, "years");
@@ -59,7 +57,7 @@ const SelectRange = ({ setStartDate }) => {
           5 Y
         </li>
         <li
-          className={`${active == "10 Y" ? "activeStyle" : ""}`}
+          className={`${active === "10 Y" ? "activeStyle" : ""}`}
           onClick={() => {
             setActive("10 Y");
             setStartDateFun(10, "years");

@@ -14,7 +14,7 @@ function App() {
   const [startDate, setStartDate] = useState(
     moment().subtract(2, "day").format("YYYY-MM-DD")
   );
-  const [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"));
+  const [endDate] = useState(moment().format("YYYY-MM-DD"));
   const [chartLabel, setChartLabel] = useState();
   const [data, setData] = useState();
 
@@ -40,7 +40,6 @@ function App() {
   ///////get Historical Bitcoin
   async function getHistoricalBitcoinFun() {
     try {
-      // setLoading(true);
       const res = await getHistoricalBitcoinAPI({
         currency: selectVal,
         startDate: startDate,
@@ -54,10 +53,8 @@ function App() {
       );
       setData(Object.values(res?.data?.bpi));
       if (res?.status === 200) {
-        // setLoading(false);
       }
     } catch (e) {
-      // setLoading(true);
       console.warn("Error in fetching");
     }
   }
@@ -94,29 +91,32 @@ function App() {
     <>
       <div className="heading">React Currency Converter</div>
 
-      {loading ? (
-        <div className="loader">
-          <CircularProgress />
-        </div>
-      ) : (
-        <div className="container">
-          <div className="leftContainer">
-            <InputSelect
-              options={options}
-              selectVal={selectVal}
-              setSelectVal={setSelectVal}
-            />
-            <div className="rupee">
-              <span>{rateDescription?.rate} </span>
-              <span>{rateDescription?.description}</span>
-            </div>
+      <div className="container">
+        {loading ? (
+          <div className="loader">
+            <CircularProgress />
           </div>
-          <div>
-            <SelectRange setStartDate={setStartDate} />
-            <AreaLineBoundryChart data={data} xAxislabel={chartLabel} />
-          </div>{" "}
-        </div>
-      )}
+        ) : (
+          <>
+            <div className="leftContainer">
+              <InputSelect
+                options={options}
+                selectVal={selectVal}
+                setSelectVal={setSelectVal}
+              />
+              <div className="rupee">
+                <span>{rateDescription?.rate} </span>
+                <br />
+                <span>{rateDescription?.description}</span>
+              </div>
+            </div>
+            <div>
+              <SelectRange setStartDate={setStartDate} />
+              <AreaLineBoundryChart data={data} xAxislabel={chartLabel} />
+            </div>{" "}
+          </>
+        )}
+      </div>
     </>
   );
 }

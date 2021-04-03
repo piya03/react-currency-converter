@@ -1,7 +1,8 @@
 import axios from "axios";
 
+const BASE_URL = "https://api.coindesk.com/v1/bpi/";
 export const currencyConverterAPI = () => {
-  return axios(`https://api.coindesk.com/v1/bpi/currentprice.json`)
+  return axios(`${BASE_URL}currentprice.json`)
     .then((res) => {
       if (res?.status === 200) {
         return res;
@@ -18,7 +19,7 @@ export const currencyConverterAPI = () => {
 ////for chart bar
 export const getHistoricalBitcoinAPI = ({ currency, startDate, endDate }) => {
   return axios(
-    `https://api.coindesk.com/v1/bpi/historical/close.json?currency=${currency}&start=${startDate}&end=${endDate}`
+    `${BASE_URL}historical/close.json?currency=${currency}&start=${startDate}&end=${endDate}`
   )
     .then((res) => {
       if (res?.status === 200) {

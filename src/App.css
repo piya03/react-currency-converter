@@ -23,9 +23,11 @@
 .loader {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 200px;
+  margin-right: -25px;
 }
+
 .leftContainer{
   display: flex;
   flex-direction: column;
@@ -34,4 +36,13 @@
 .rupee{
   font-size: 28px;
   font-weight: 500;
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    display: grid;
+    grid-template-columns: auto;
+    min-height: 550px;
+    margin: 20px;
+  }
 }
